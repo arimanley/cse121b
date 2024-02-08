@@ -49,7 +49,7 @@ const reset= () => {
 const filterTemples = (temples) => {
  reset();
 
- const filter = document.querySelector("#filtered");
+ const filter = document.querySelector("#filtered").value;
 
 
  switch (filter) {
@@ -58,7 +58,7 @@ const filterTemples = (temples) => {
     break;
 
     case "notutah":
-  displayTemples(temples.filter(temple => !temple.location.includes('utah')));
+  displayTemples(temples.filter(temple => !temple.location.includes('Utah')));
     break;
  
     case "older":
@@ -68,7 +68,7 @@ const filterTemples = (temples) => {
     case "all":
         displayTemples(temples);
     break;
-  
+
 
  }
 
