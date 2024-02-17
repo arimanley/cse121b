@@ -7,25 +7,32 @@ let superheroList = [];
 /* async displaySuperheroes Function */
 const displaySuperheroes = (superheroes) => {
   superheroes.forEach((superhero) => {
-    // Create an HTML <div> element (createElement).
+    // Crear un HTML <div> elemento (createElement).
     const superheroCard = document.createElement('div');
     superheroCard.classList.add('superhero-card');
 
-    // Create an HTML <h3> element and add the superhero's name property to this new element.
+    // Crear un HTML <h3> elemento y agregar la propiedad 'name' del superhéroe a este nuevo elemento.
     const h3Superhero = document.createElement('h3');
     h3Superhero.textContent = superhero.name;
 
-    // Create an HTML <img> element and add the superhero's image url property to the src attribute
-    // and the superhero's name property to the alt attribute.
+    // Crear un HTML <img> elemento y agregar la propiedad 'url' del superhéroe a la src atributo
+    // y la propiedad 'name' del superhéroe a la alt atributo.
     const imgSuperhero = document.createElement('img');
-    imgSuperhero.src = superhero.image.url;
-    imgSuperhero.alt = superhero.name;
+    
+    // Verificar que la propiedad 'image' esté definida y que 'url' sea una propiedad válida antes de acceder a ella
+    if (superhero.image && superhero.image.url) {
+      imgSuperhero.src = superhero.image.url;
+      imgSuperhero.alt = superhero.name;
+    } else {
+      // Manejar el caso donde 'image' o 'url' pueden ser undefined o no válidos
+      console.error(`No se puede acceder a la propiedad 'url' de la imagen para ${superhero.name}`);
+    }
 
-    // Append the <h3> element and the <img> element to the <div> element as children.
+    // Añadir el <h3> elemento y el <img> elemento al <div> elemento como hijos.
     superheroCard.appendChild(h3Superhero);
     superheroCard.appendChild(imgSuperhero);
 
-    // Append the <div> element to the global superheroesContainer variable.
+    // Añadir el <div> elemento a la variable global superheroesContainer.
     superheroesContainer.appendChild(superheroCard);
   });
 };
@@ -33,7 +40,7 @@ const displaySuperheroes = (superheroes) => {
 /* async getSuperheroes Function using fetch() */
 const getSuperheroes = async () => {
   try {
-    const response = await fetch('https://arimanley.github.io/cse121b/w02-task/scripts/data.json');
+    const response = await fetch( 'https://arimanley.github.io/cse121b/w02-task/scripts/data.json');
     if (response.ok) {
       // Convert the response to JSON
       const data = await response.json();
@@ -65,21 +72,21 @@ const filterSuperheroes = (superheroes) => {
   const filter = document.getElementById('filtered').value;
 
   switch (filter) {
-    case 'Cosmic Entity':
-      displaySuperheroes(superheroes.filter(superhero => superhero.appearance.race === 'Cosmic Entity'));
+    case 'Human':
+      displaySuperheroes(superheroes.filter(superhero => superhero.appearance && superhero.appearance.race === 'Human'));
       break;
 
-    case 'Android':
-      displaySuperheroes(superheroes.filter(superhero => superhero.appearance.race === 'Android'));
-      break;
+      case 'Android':
+        displaySuperheroes(superheroes.filter(superhero => superhero.appearance && superhero.appearance.race === 'Android'));
+        break;
 
-      case 'Human':
-      displaySuperheroes(superheroes.filter(superhero => superhero.appearance.race === 'Human'));
-      break;
+        case 'Cosmic Entity':
+        displaySuperheroes(superheroes.filter(superhero => superhero.appearance && superhero.appearance.race === 'Cosmic Entity'));
+        break;
 
-    case 'null':
-      displaySuperheroes(superheroes.filter(superhero => superhero.appearance.race === 'null'));
-      break;
+        case 'null':
+        displaySuperheroes(superheroes.filter(superhero => superhero.appearance && superhero.appearance.race === 'null'));
+        break;
 
     case 'all':
       displaySuperheroes(superheroes);
