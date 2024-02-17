@@ -72,10 +72,7 @@ const filterSuperheroes = (superheroes) => {
   const filter = document.getElementById('filtered').value;
 
   switch (filter) {
-    case 'Human':
-      displaySuperheroes(superheroes.filter(superhero => superhero.appearance && superhero.appearance.race === 'Human'));
-      break;
-
+  
       case 'Android':
         displaySuperheroes(superheroes.filter(superhero => superhero.appearance && superhero.appearance.race === 'Android'));
         break;
