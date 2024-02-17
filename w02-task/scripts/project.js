@@ -33,7 +33,7 @@ const displaySuperheroes = (superheroes) => {
 /* async getSuperheroes Function using fetch() */
 const getSuperheroes = async () => {
   try {
-    const response = await fetch('https://arimanley.github.io/cse121b/Project/data.json');
+    const response = await fetch('https://arimanley.github.io/cse121b/w02-task/scripts/data.json');
     if (response.ok) {
       // Convert the response to JSON
       const data = await response.json();
