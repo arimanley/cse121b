@@ -75,6 +75,7 @@ const filterSuperheroes = (superheroes) => {
 
       case 'Human':
       displaySuperheroes(superheroes.filter(superhero => superhero.appearance.race === 'Human'));
+      break;
 
     case 'null':
       displaySuperheroes(superheroes.filter(superhero => superhero.appearance.race === 'null'));
