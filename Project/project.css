@@ -6,7 +6,7 @@
    
 }
 
-/* HTML Selectors */
+
 body {
     font-family: 'Roboto', Helvetica, sans-serif;
 }
@@ -68,7 +68,7 @@ h2 {
     margin-top: 25px;
 }
 
-h3 {  /*nombre de los superheroes */
+h3 { 
     font-size: 1.3rem;
     margin-bottom: 0.5rem;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
@@ -84,12 +84,12 @@ footer {
     bottom: 0;
 }
 
-/* Class Selectors */
+
 .active {
     border-bottom: 1px solid yellow;
 }
 
-/* ID Selectors */
+
 #filtered{   
     background-color: DodgerBlue;
     color: antiquewhite;

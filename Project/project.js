@@ -7,32 +7,25 @@ let superheroList = [];
 /* async displaySuperheroes Function */
 const displaySuperheroes = (superheroes) => {
   superheroes.forEach((superhero) => {
-    // Crear un HTML <div> elemento (createElement).
+   
     const superheroCard = document.createElement('div');
     superheroCard.classList.add('superhero-card');
 
-    // Crear un HTML <h3> elemento y agregar la propiedad 'name' del superhéroe a este nuevo elemento.
     const h3Superhero = document.createElement('h3');
     h3Superhero.textContent = superhero.name;
 
-    // Crear un HTML <img> elemento y agregar la propiedad 'url' del superhéroe a la src atributo
-    // y la propiedad 'name' del superhéroe a la alt atributo.
     const imgSuperhero = document.createElement('img');
     
-    // Verificar que la propiedad 'image' esté definida y que 'url' sea una propiedad válida antes de acceder a ella
     if (superhero.image && superhero.image.url) {
       imgSuperhero.src = superhero.image.url;
       imgSuperhero.alt = superhero.name;
     } else {
-      // Manejar el caso donde 'image' o 'url' pueden ser undefined o no válidos
       console.error(`No se puede acceder a la propiedad 'url' de la imagen para ${superhero.name}`);
     }
 
-    // Añadir el <h3> elemento y el <img> elemento al <div> elemento como hijos.
     superheroCard.appendChild(h3Superhero);
     superheroCard.appendChild(imgSuperhero);
 
-    // Añadir el <div> elemento a la variable global superheroesContainer.
     superheroesContainer.appendChild(superheroCard);
   });
 };
@@ -40,7 +33,7 @@ const displaySuperheroes = (superheroes) => {
 /* async getSuperheroes Function using fetch() */
 const getSuperheroes = async () => {
   try {
-    const response = await fetch( 'https://arimanley.github.io/cse121b/w02-task/scripts/data.json');
+    const response = await fetch( 'https://arimanley.github.io/cse121b/Project/data.json');
     if (response.ok) {
       // Convert the response to JSON
       const data = await response.json();
